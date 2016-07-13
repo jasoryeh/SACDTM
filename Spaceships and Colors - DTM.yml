@@ -1,0 +1,95 @@
+info:
+  title: 'Spaceships and Colors' #Based on the colors and Aliens and Humans
+  version: '1.0' #First make... Of course 1.0
+  type: DTM #Why is there obsidian again?
+  creators:
+  - 'InputIGNHere' #I'm lonely why me only?
+  spawn: 0.5,101,0.5,180,0
+  time: 6000 #Daytime works best.
+teams:
+  green:
+    title: 'Aliens' # Spooky
+    spawn:
+      - 107,47,112.5,90,0
+    max: 30 #Lessen the CAN I JOIN? PLZ PLZ!
+    monuments:
+      a:
+        name: Left
+        location: -123,49,148
+      b:
+        name: Center
+        location: -66,45,112
+      c:
+        name: Right
+        location: -123,48,76
+  white:
+    title: 'Humans' #Don't know who these are...
+    spawn:
+      - -106.5,47,112.5,-90,0
+    max: 30
+      a:
+        name: Left
+        location: 124,48,76
+      b:
+        name: Center
+        location: 67,45,112
+      c:
+        name: Right
+        location: 124,48,148
+#I don't know if the outputs are supposed to be in the teams. Msg me on forums if they are.
+0:
+  item: iron axe
+  title: 'Solid Laser Beam' #Interesting concept right there!
+1:
+  item: bow
+  title: 'Katniss''s Bow' #OOOOO Teacher! He stole!
+  lore:
+  - 'Used by Katniss Everdeen in the Hunger Games!' #Well duh...
+  - 'Use with caution.'
+  enchants:
+  - infinity: 1
+2:
+  item: diamond_pickaxe
+  title: 'On contact mining drill!' #Nice.
+  enchants:
+  - efficiency: 3
+3:
+  item: golden_apple
+  amount: 3
+  title: 'Magic apple!' #Because it gives potion effects
+  lore: 
+  - 'Picked from a tree somewhere' #It's an apple!
+4:
+  item: cooked_beef
+  title: 'Beef Jerky' #My fav
+  amount: 64
+  lore:
+  - 'Very tasty!' #Depends how long it has been in the players inventory
+5:
+  item: stained_glass
+6:
+  item: stained_hardened_clay
+7:
+  item: log
+28:
+  item: arrow
+  amount: 1
+helmet:
+  item: leather_helmet
+chestplate:
+  item: leather_chestplate
+leggings:
+  item: leather_leggings
+boots:
+  item: leather_boots
+#Please correct if I did this wrong! Docs didn't state if I should put type: spawn for spawn...
+AlienSpawn:
+  type: point
+  point: 107,47,112.5,90,0
+HumanSpawn:
+  type: point
+  point: -106.5,47,112.5,-90,0
+Arena:
+  type: global
+  effects:
+  - night_vision:1,999999

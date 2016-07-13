@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--I have no idea if this is right please fix if wrong. I used the XML pastebin from Zintenka's Hargrove as reference on how to do cml -->
+<map name="Spceships and Colors">
+    <authors>
+        <author uuid="6a81760ce56942099de44e6f636ab030"/><!-- InputIGNHere -->
+    </authors>
+    
+    <locales>
+        <locale lang="en">
+            <green>Aliens</green>
+            <white>Humans</white>
+        </locale>
+    </locales>
+    <teams>
+        <team id="green" color="green" min="5" max="30">{green}</team>
+        <team id="white" color="white" min="5" mac="30">{white}</team>
+    </teams>
+    
+    <spawns>
+        <spawn id="default" team="spectators" yaw="180" pitch="0">
+            <regions>
+                <block>0.5, 101, 0.5</block>
+            </regions>
+        </spawn>
+        <spawn id="green" team="green" yaw="90" pitch="0">
+            <regions>
+                <block>107.5, 47, 112.5</block>
+            </regions>
+        </spawn>
+        <spawn id="white" team="white" yaw="-90" pitch="0">
+            <regions>
+                <block>-106.5, 47, 112.5</block>
+            </regions>
+        </spawn>
+    </spawns>
