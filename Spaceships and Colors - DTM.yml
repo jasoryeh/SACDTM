@@ -10,7 +10,7 @@ teams:
   green:
     title: 'Aliens' # Spooky
     spawn:
-      - 107,47,112.5,90,0
+      - 107.5,47,112.5,90,0
     max: 30 #Lessen the CAN I JOIN? PLZ PLZ!
     monuments:
       a:
