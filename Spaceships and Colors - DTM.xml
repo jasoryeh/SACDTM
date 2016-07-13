@@ -1,19 +1,14 @@
 <?xml version="1.0"?>
 <!--I have no idea if this is right please fix if wrong. I used the XML pastebin from Zintenka's Hargrove as reference on how to do cml -->
-<map name="Spceships and Colors">
+<!--Welp, I just found the atlas site...-->
+<map name="Spceships and Colors" version="1.0" description="A Outerspace and Color themed DTM map.">
     <authors>
-        <author uuid="6a81760ce56942099de44e6f636ab030"/><!-- InputIGNHere -->
+        <author uuid="6a81760ce56942099de44e6f636ab030" role="Making the whole map..."/><!-- InputIGNHere -->
     </authors>
     
-    <locales>
-        <locale lang="en">
-            <green>Aliens</green>
-            <white>Humans</white>
-        </locale>
-    </locales>
     <teams>
-        <team id="green" color="green" min="5" max="30">{green}</team>
-        <team id="white" color="white" min="5" mac="30">{white}</team>
+        <team id="Aliens" color="green" min="3" max="30">Aliens</team>
+        <team id="Humans" color="white" min="3" max="30">Humans</team>
     </teams>
     
     <spawns>
@@ -22,14 +17,80 @@
                 <block>0.5, 101, 0.5</block>
             </regions>
         </spawn>
-        <spawn id="green" team="green" yaw="90" pitch="0">
+        <spawn id="Aliens" team="green" yaw="90" pitch="0">
             <regions>
                 <block>107.5, 47, 112.5</block>
             </regions>
         </spawn>
-        <spawn id="white" team="white" yaw="-90" pitch="0">
+        <spawn id="Humans" team="white" yaw="-90" pitch="0">
             <regions>
                 <block>-106.5, 47, 112.5</block>
             </regions>
         </spawn>
     </spawns>
+    <loadouts>
+        <loadout id="main" force="true">
+            <item slot="0" material="iron_sword"/>
+            <item slot="1" material= "bow">
+                <enchantment>arrow_infinite</enchantment>
+            </item>
+            <item slot="2" material="diamond_pickaxe">
+                <enchantment level="3">efficiency</enchantment>
+            </item>
+            <item slot="3" material="golden_apple" amount="3"/>
+            <item slot="4" material="log" amount="64"/>
+            <item slot="5" material="stained_hardened_clay" amount="64" team-color="true"/>
+            <item slot="6" material="stained_glass" amount="64" team-color="true"/>
+            <item slot="8" material="steak" amount="16"/>
+            <item slot="28" material="arrow" amount="1"/>
+            <item slot="103" material="leather_helmet" team-color="true"/>
+            <item slot="102" material="leather_chestplate" team-color="true"/>
+            <item slot="101" material="leather_leggings" team-color="true"/>
+            <item slot="100" material="leather_boots" team-color="true"/>
+        </loadout>
+    </loadouts>
+    <regions>
+        <!--Spectator Spawn-->
+        <cylinder base="0.5, 101, 0.5" radius="25" height="25"/>
+        <!--Aliens and Human spawn-->
+        <cylinder base="107.5, 47, 112.5" radius="8" height="30"/>
+        <cylinder base="-106.5, 47, 112.5" radius="8" height="30"/>
+    </regions>
+    <objectives>
+        <monuments materials="obsidian">
+            <monuments owner="Aliens">
+                <monument name="Right">
+                    <region><point>-123,48,76</point></region>
+                </monument>
+                <monument name="Center">
+                    <region><point>-66,45,112</point></region>
+                </monument>
+                <monument name="Left">
+                    <region><point>-123,49,148</point></region>
+                </monument>
+            </monuments>
+            <monuments owner="Humans">
+                <monument name="Right">
+                    <region><point>124,48,148</point></region>
+                </monument>
+                <monument name="Center">
+                    <region><point>67,45,112</point></region>
+                </monument>
+                <monument name="Left">
+                    <region><point>124,48,76</point></region>
+                </monument>
+            </monuments>
+        </monuments>
+    </objectives>
+    <items>
+        <remove-drops>
+            <any>
+                <material>iron_sword</material>
+                <material>diamond_pickaxe</material>
+                <material>bow</material>
+            </any>
+        </remove-drops>
+    </items>
+    <world>
+        <difficulty>hard</difficulty>
+    </world>
