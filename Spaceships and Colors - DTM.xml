@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!--I have no idea if this is right please fix if wrong. I used the XML pastebin from Zintenka's Hargrove as reference on how to do cml -->
 <!--Welp, I just found the atlas site...-->
-<map name="Spceships and Colors" version="1.0" description="A Outerspace and Color themed DTM map.">
+<map name="Spceships and Colors" version="2.0" description="A Outerspace and Color themed DTM map.">
     <authors>
         <author uuid="6a81760ce56942099de44e6f636ab030" role="Making the whole map..."/><!-- InputIGNHere -->
     </authors>
     
     <teams>
-        <team id="Aliens" color="green" min="3" max="30">Aliens</team>
-        <team id="Humans" color="white" min="3" max="30">Humans</team>
+        <team id="Aliens" color="green" min="2" max="30">Aliens</team>
+        <team id="Humans" color="white" min="2" max="30">Humans</team>
     </teams>
     
     <spawns>
@@ -41,7 +41,7 @@
             <item slot="4" material="log" amount="64"/>
             <item slot="5" material="stained_hardened_clay" amount="64" team-color="true"/>
             <item slot="6" material="stained_glass" amount="64" team-color="true"/>
-            <item slot="8" material="steak" amount="16"/>
+            <item slot="8" material="steak" amount="64"/>
             <item slot="28" material="arrow" amount="1"/>
             <item slot="103" material="leather_helmet" team-color="true"/>
             <item slot="102" material="leather_chestplate" team-color="true"/>
@@ -51,33 +51,55 @@
     </loadouts>
     <regions>
         <!--Spectator Spawn-->
-        <cylinder base="0.5, 101, 0.5" radius="25" height="25"/>
+        <cylinder id="spec-spawn" base="0.5, 100, 0.5" radius="25" height="25"/>
         <!--Aliens and Human spawn-->
-        <cylinder base="107.5, 47, 112.5" radius="8" height="30"/>
-        <cylinder base="-106.5, 47, 112.5" radius="8" height="30"/>
+        <cylinder id="alien-spawn" base="107.5, 47, 112.5" radius="8" height="30"/>
+        <cylinder id="human-spawn" base="-106.5, 47, 112.5" radius="8" height="30"/>
     </regions>
+    <zones>
+        <zone modify="never">
+            <region>
+                <!--Spectator Spawn-->
+                <cylinder id="spec-spawn" base="0.5, 100, 0.5" radius="25" height="25"/>
+            </region>
+            <message>{build-deny.spectator}</message>
+        </zone>
+        <zone modify="never">
+            <region>
+                <!--Aliens and Human spawn-->
+                <cylinder id="alien-spawn" base="107.5, 47, 112.5" radius="8" height="30"/>
+            </region>
+            <message>{build-deny.alien}</message>
+        </zone>
+        <zone modify="never">
+            <region>
+                <cylinder id="human-spawn" base="-106.5, 47, 112.5" radius="8" height="30"/>
+            </region>
+            <message>{build-deny.human}</message>
+        </zone>
+    </zones>
     <objectives>
         <monuments materials="obsidian">
             <monuments owner="Aliens">
                 <monument name="Right">
-                    <region><point>-123,48,76</point></region>
+                    <region><point>91,48,176</point></region>
                 </monument>
                 <monument name="Center">
-                    <region><point>-66,45,112</point></region>
+                    <region><point>-60,46,112</point></region>
                 </monument>
                 <monument name="Left">
-                    <region><point>-123,49,148</point></region>
+                    <region><point>91,48,48</point></region>
                 </monument>
             </monuments>
             <monuments owner="Humans">
                 <monument name="Right">
-                    <region><point>124,48,148</point></region>
+                    <region><point>-91,48,48</point></region>
                 </monument>
                 <monument name="Center">
-                    <region><point>67,45,112</point></region>
+                    <region><point>-60,46,112</point></region>
                 </monument>
                 <monument name="Left">
-                    <region><point>124,48,76</point></region>
+                    <region><point>-91,48,176</point></region>
                 </monument>
             </monuments>
         </monuments>
@@ -88,9 +110,35 @@
                 <material>iron_sword</material>
                 <material>diamond_pickaxe</material>
                 <material>bow</material>
+                <material>leather_helmet</material>
+                <material>leather_chestplate</material>
+                <material>leather_leggings</material>
+                <material>leather_boots</material>
+                <material>stained_clay</material>
+                <material>stained_glass</material>
             </any>
         </remove-drops>
     </items>
     <world>
-        <difficulty>hard</difficulty>
+        <difficulty>easy</difficulty>
+        
     </world>
+    <broadcasts>
+        <broadcast format="default" interval="2m">{bcs.1}</broadcast>
+        <broadcast format="default" interval="2m">{bcs.2}</broadcast>
+        <broadcast format="default" interval="2m">{bcs.3}</broadcast>
+        <broadcast format="tip" interval="2m">{bcs.4}</broadcast>
+    </broadcasts>
+    <locales lang="en">
+        <build-deny>
+            <alien>You cannot build in Alien's spawn.</alien>
+            <human>You cannot build in Human's spawn.</human>
+            <spectator>You cannot build in Spectator's spawn.</spectator>
+        </build-deny>
+        <bcs>
+            <1>[SC]Spaceships and alien UFOs are accessible</1>
+            <2>[SC]Height limit is 256 blocks on this map.</2>
+            <3>[SC]Map was built by InputIGNHere aka JasorYEH</3>
+            <4>[SC]Two enderpearls can be found in the middle of the map, use it wisely!</4>
+        </bcs>
+    </locales>
