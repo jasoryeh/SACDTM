@@ -1,54 +1,61 @@
 <?xml version="1.0"?>
-<!--I have no idea if this is right please fix if wrong. I used the XML pastebin from Zintenka's Hargrove as reference on how to do cml -->
+<!--I have no idea if this is right please fix if wrong. I used the XML pastebin from Zintenka's Hargrove as reference on how to do xml -->
 <!--Welp, I just found the atlas site...-->
-<map name="Spceships and Colors" version="2.0" description="A Outerspace and Color themed DTM map.">
+<map name="Spaceships and Colors" version="2.0.0" description="A Outerspace and Color themed DTM map." spec="1.0.4">
+    <include src="defaults.xml" />
+    <gametype>dtm</gametype>
+    <include src="Shared/reward-one-gap.xml"/>
+    <include src="Shared/tutorials/dtm.xml"/>
     <authors>
-        <author uuid="6a81760ce56942099de44e6f636ab030" role="Making the whole map..."/><!-- InputIGNHere -->
+        <author uuid="6a81760ce56942099de44e6f636ab030" role="Making the whole map..." /><!-- InputIGNHere -->
     </authors>
-    
     <teams>
         <team id="Aliens" color="lime" min="2" max="30">Aliens</team>
         <team id="Humans" color="white" min="2" max="30">Humans</team>
     </teams>
-    
     <spawns>
         <spawn id="default" team="spectators" yaw="180" pitch="0">
             <regions>
                 <block>0.5, 101, 0.5</block>
             </regions>
         </spawn>
-        <spawn id="Aliens" team="green" yaw="90" pitch="0">
+        <spawn id="Aliens" loadout="default" color="lime" yaw="90" pitch="0">
             <regions>
                 <block>107.5, 47, 112.5</block>
             </regions>
         </spawn>
-        <spawn id="Humans" team="white" yaw="-90" pitch="0">
+        <spawn id="Humans" loadout="default" color="white" yaw="-90" pitch="0">
             <regions>
                 <block>-106.5, 47, 112.5</block>
             </regions>
         </spawn>
     </spawns>
-    <loadouts>
-        <loadout id="main" force="true">
-            <item slot="0" material="iron_sword"/>
-            <item slot="1" material= "bow">
-                <enchantment>arrow_infinite</enchantment>
-            </item>
-            <item slot="2" material="diamond_pickaxe">
-                <enchantment level="3">efficiency</enchantment>
-            </item>
-            <item slot="3" material="golden_apple" amount="3"/>
-            <item slot="4" material="log" amount="64"/>
-            <item slot="5" material="stained_hardened_clay" amount="64" team-color="true"/>
-            <item slot="6" material="stained_glass" amount="64" team-color="true"/>
-            <item slot="8" material="steak" amount="64"/>
-            <item slot="28" material="arrow" amount="1"/>
-            <item slot="103" material="leather_helmet" team-color="true"/>
-            <item slot="102" material="leather_chestplate" team-color="true"/>
-            <item slot="101" material="leather_leggings" team-color="true"/>
-            <item slot="100" material="leather_boots" team-color="true"/>
-        </loadout>
-    </loadouts>
+    <objectives>
+        <monuments materials="obsidian">
+            <monuments owner="Aliens">
+                <monument name="Right">
+                    <region><block>91,48,176</block></region>
+                </monument>
+                <monument name="Center">
+                    <region><block>-60,46,112</block></region>
+                </monument>
+                <monument name="Left">
+                    <region><block>91,48,48</block></region>
+                </monument>
+            </monuments>
+            <monuments owner="Humans">
+                <monument name="Right">
+                    <region><block>-91,48,48</block></region>
+                </monument>
+                <monument name="Center">
+                    <region><block>-60,46,112</block></region>
+                </monument>
+                <monument name="Left">
+                    <region><block>-91,48,176</block></region>
+                </monument>
+            </monuments>
+        </monuments>
+    </objectives>
     <regions>
         <!--Spectator Spawn-->
         <cylinder id="spec-spawn" base="0.5, 100, 0.5" radius="25" height="25"/>
@@ -62,48 +69,22 @@
                 <!--Spectator Spawn-->
                 <cylinder id="spec-spawn" base="0.5, 100, 0.5" radius="25" height="25"/>
             </region>
-            <message>{build-deny.spectator}</message>
+            <message>You cannot build in Spectator's spawn.</message>
         </zone>
         <zone modify="never">
             <region>
                 <!--Aliens and Human spawn-->
                 <cylinder id="alien-spawn" base="107.5, 47, 112.5" radius="8" height="30"/>
             </region>
-            <message>{build-deny.alien}</message>
+            <message>You cannot build in Alien's spawn.</message>
         </zone>
         <zone modify="never">
             <region>
                 <cylinder id="human-spawn" base="-106.5, 47, 112.5" radius="8" height="30"/>
             </region>
-            <message>{build-deny.human}</message>
+            <message>You cannot build in Human's spawn.</message>
         </zone>
     </zones>
-    <objectives>
-        <monuments materials="obsidian">
-            <monuments owner="Aliens">
-                <monument name="Right">
-                    <region><point>91,48,176</point></region>
-                </monument>
-                <monument name="Center">
-                    <region><point>-60,46,112</point></region>
-                </monument>
-                <monument name="Left">
-                    <region><point>91,48,48</point></region>
-                </monument>
-            </monuments>
-            <monuments owner="Humans">
-                <monument name="Right">
-                    <region><point>-91,48,48</point></region>
-                </monument>
-                <monument name="Center">
-                    <region><point>-60,46,112</point></region>
-                </monument>
-                <monument name="Left">
-                    <region><point>-91,48,176</point></region>
-                </monument>
-            </monuments>
-        </monuments>
-    </objectives>
     <items>
         <remove-drops>
             <any>
@@ -121,24 +102,37 @@
     </items>
     <world>
         <difficulty>easy</difficulty>
-        
     </world>
     <broadcasts>
-        <broadcast format="default" interval="2m">{bcs.1}</broadcast>
-        <broadcast format="default" interval="2m">{bcs.2}</broadcast>
-        <broadcast format="default" interval="2m">{bcs.3}</broadcast>
-        <broadcast format="tip" interval="2m">{bcs.4}</broadcast>
+        <broadcast format="tip" interval="2m">[SC] Spaceships and alien UFOs are accessible</broadcast>
+        <broadcast format="tip" interval="3m">[SC] Height limit is 256 blocks on this map.</broadcast>
+        <broadcast format="tip" interval="10m">[SC] Map was built by InputIGNHere aka JasorYEH</broadcast>
+        <broadcast format="tip" interval="5m">[SC]Two enderpearls can be found in the middle of the map, use it wisely!</broadcast>
     </broadcasts>
-    <locales lang="en">
-        <build-deny>
-            <alien>You cannot build in Alien's spawn.</alien>
-            <human>You cannot build in Human's spawn.</human>
-            <spectator>You cannot build in Spectator's spawn.</spectator>
-        </build-deny>
-        <bcs>
-            <1>[SC]Spaceships and alien UFOs are accessible</1>
-            <2>[SC]Height limit is 256 blocks on this map.</2>
-            <3>[SC]Map was built by InputIGNHere aka JasorYEH</3>
-            <4>[SC]Two enderpearls can be found in the middle of the map, use it wisely!</4>
-        </bcs>
-    </locales>
+    <loadouts>
+        <loadout id="default">
+            <helmet material="leather helmet" team-color="true"/>
+            <chestplate material="leather chestplate" team-color="true"/>
+            <leggings material="leather leggings" team-color="true"/>
+            <boots material="leather boots" team-color="true"/>
+            <effect duration="8s">damage resistance</effect>
+            <item slot="0" material="iron_sword"/>
+            <item slot="1" material="bow">
+                <enchantments>
+                    <enchantment level="1">arrow infinite</enchantment>
+                </enchantments>
+            </item>
+            <item slot="2" material="diamond_pickaxe">
+                <enchantments>
+                    <enchantment level="3">dig speed</enchantment>
+                </enchantments>
+            </item>
+            <item slot="3" material="golden_apple" amount="3"/>
+            <item slot="4" material="log" amount="64"/>
+            <item slot="5" material="hard_clay" amount="64" team-color="true"/>
+            <item slot="6" material="stained_glass" amount="64" team-color="true"/>
+            <item slot="8" material="cooked beef" amount="64"/>
+            <item slot="28" material="arrow" amount="1"/>
+        </loadout>
+    </loadouts>
+</map>
